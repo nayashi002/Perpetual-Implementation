@@ -52,3 +52,4 @@ Nayashi Perps is a decentralized perpetual trading protocol that enables users t
    ```bash
    git clone https://github.com/your-username/nayashi-perps.git
    cd nayashi-perps
+# nayashi-perpetual
