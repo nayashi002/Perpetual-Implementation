@@ -1,66 +1,54 @@
-## Foundry
+# Nayashi Perps
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+Nayashi Perps is a decentralized perpetual trading protocol that enables users to open, manage, and liquidate leveraged positions on BTC without converting collateral to USD. This protocol is designed with safety mechanisms like liquidity utilization limits and an auto-deleveraging (ADL) system inspired by GMX.
 
-Foundry consists of:
+## Features
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- **Liquidity Management**:
+  - Liquidity Providers can deposit and withdraw funds.
+  - Configurable liquidity utilization percentages.
+  - Restricted liquidity withdrawals for reserved positions.
 
-## Documentation
+- **Trading**:
+  - Open and manage perpetual positions with adjustable size and collateral.
+  - Real-time price fetching for accurate trading execution.
 
-https://book.getfoundry.sh/
+- **Risk Management**:
+  - Positions are liquidated when leverage equals the  leverage threshold.
+  - Auto-deleveraging (ADL) to ensure system stability.
 
-## Usage
+- **Unique Position Logic**:
+  - Entry prices are based on `size` rather than collateral.
+  - No share allocation to Liquidity Providers.
+  - Collateral amounts are not normalized to USD.
 
-### Build
+## Technology Stack
 
-```shell
-$ forge build
-```
+- **Programming Language**: Solidity
+- **Testing Framework**: Foundry
+- **Static Analysis**: Slither
+- **Development Tools**: 
+  - `forge` for testing and simulations.
+  - Price feed integrations (e.g., Chainlink Oracles).
 
-### Test
+## Contract Functions
 
-```shell
-$ forge test
-```
+### Core Functions
 
-### Format
+1. **Liquidity Management**:
+    - `depositLiquidity()`: Adds funds to the liquidity pool.
+    - `withdrawLiquidity()`: Removes funds from the pool, if available.
 
-```shell
-$ forge fmt
-```
+2. **Trading**:
+    - `openPosition(uint256 size, uint256 collateral)`: Opens a new position.
+    - `adjustPosition(uint256 newSize, uint256 newCollateral)`: Adjusts an existing position.
 
-### Gas Snapshots
 
-```shell
-$ forge snapshot
-```
 
-### Anvil
+## Installation
 
-```shell
-$ anvil
-```
+1. Clone the repository:
 
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+   ```bash
+   git clone https://github.com/your-username/nayashi-perps.git
+   cd nayashi-perps
